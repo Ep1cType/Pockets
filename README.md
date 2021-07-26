@@ -1,22 +1,19 @@
-# Практика Sibdev 2021
+![Pockets](https://svgshare.com/i/ZZn.svg)
+***
+**Pockets** is an application for accounting of funds and obtaining simple analytics by categories of expenses and income.
 
-## Доступные команды
+## Getting started
+***
+To get the running locally:
+- Clone this repo
+- `npm install` to install all required dependencies
+- `npm start` to start the local server
 
-В папке с проектом вы можете запустить следующие команды:
-
-### `npm run start`
-
-Запуск приложения в режиме разработки<br />
-Откройте ссылку [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат
-
-### `npm run lint`
-
-Запуск линтера для проверки на наличие ошибок
-
-### `npm run lint:fix`
-
-Автоматическое исправление ошибок, найденных линтером
-
-### `npm run prettify`
-
-Запуск prettier для форматирования кода
+## Available commands
+***
+Running the linter to check for errors:
+`npm run lint`
+Automatic correction of errors found by linter:
+`npm run lint:fix`
+Running prettier to format the code
+`npm run prettify`
