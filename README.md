@@ -11,9 +11,9 @@ To get the running locally:
 
 ## Available commands
 ***
-Running the linter to check for errors:
+- Running the linter to check for errors:
 `npm run lint`
-Automatic correction of errors found by linter:
+- Automatic correction of errors found by linter:
 `npm run lint:fix`
-Running prettier to format the code
+- Running prettier to format the code
 `npm run prettify`
