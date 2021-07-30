@@ -1,0 +1,17 @@
+.form_text {
+  align-self: flex-start;
+  font-family: 'Montserrat', sans-serif;
+  width: 334px;
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #6E6B7B;
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6E6B7B;
+    line-height: 21px;
+  }
+}

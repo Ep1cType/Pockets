@@ -1,0 +1,69 @@
+.form_inputs {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 21px;
+
+  span {
+    font-size: 14px;
+    margin: 5px 0;
+    color: red;
+  }
+
+  span:first-child {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: green;
+  }
+
+
+  label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6E6B7B;
+    margin-bottom: 2px;
+  }
+
+  input[type = "username"],[type = "email"],[type = "password"] {
+    width: 342px;
+    height: 38px;
+    border: 1px solid #d8d6de;
+    //border-color: #FFFFFF;
+    outline: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #B9B9C3;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .input_checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+
+    input[type = "checkbox"] {
+      height: 18px;
+      width: 18px;
+      outline: none;
+      border: 1px solid #d8d6de;
+      border-radius: 3px;
+      margin-right: 16px;
+    }
+  }
+}
+
+.signup-form-desc {
+  span {
+    margin-right: 10px;
+    color: #6E6B7B;
+  }
+  .link {
+    color: #7367F0;
+    text-decoration: none;
+  }
+}

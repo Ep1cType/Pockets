@@ -1,0 +1,47 @@
+
+.form {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 21px;
+
+  .form__error {
+    font-size: 10px;
+    margin: 5px 0;
+    color: red;
+  }
+
+
+  .login_form_inputs__error {
+    color: red;
+    margin-bottom: 10px;
+  }
+}
+
+.login_form_inputs__success {
+  color: green;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6E6B7B;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: fit-content;
+
+
+
+  .form__link {
+    text-decoration: none;
+  }
+}

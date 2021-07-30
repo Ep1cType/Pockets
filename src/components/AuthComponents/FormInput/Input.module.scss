@@ -1,0 +1,17 @@
+input[type = "email"],[type = "password"] {
+  width: 342px;
+  height: 38px;
+  border: 1px solid #d8d6de;
+  outline: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: #B9B9C3;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+input[type = "password"] {
+  margin-bottom: 39px;
+}
