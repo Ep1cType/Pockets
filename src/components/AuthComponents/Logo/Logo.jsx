@@ -7,7 +7,7 @@ import s from './Logo.module.scss';
 const Logo = () => {
   return (
     <div className={s.logo}>
-      <img src={logo} alt="#" />
+      <img className={s.logo__img} src={logo} alt="#" />
     </div>
   );
 };

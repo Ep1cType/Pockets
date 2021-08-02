@@ -1,4 +1,4 @@
-.login_wrapper {
+.loginPage {
   width: 100vw;
   height: 100vh;
   background-color: #FBFAFD;
@@ -7,16 +7,23 @@
   align-items: center;
 }
 
-.login_form {
-  height: 524px;
-  width: 407px;
-  background-color: white;
-  border-radius: 6px;
-  padding: 26px 32px 35px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 24px 0 #0000000F;
+.login {
+  &__content {
+    height: 524px;
+    width: 407px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 26px 32px 35px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 24px 0 #0000000F;
+  }
+
+}
+
+.login__content {
+
 
 }
 

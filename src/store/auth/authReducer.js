@@ -1,13 +1,16 @@
-import { AuthAPI } from '../api/api';
-import UserService from '../services/UserService';
+import AuthService from '../../services/AuthService';
+import UserService from '../../services/UserService';
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_AUTH = 'SET_AUTH';
-const SET_ERROR = 'SET_ERROR';
-const SET_REG_ERROR = 'SET_REG_ERROR';
-const SET_USER_INFO = 'SET_USER_INFO';
-const SET_SUCCESS_REG = 'SET_SUCCESS_REG';
-const SET_LOADING = 'SET_LOADING';
+import { setAuth, setError, setLoading, setRegError, setRegSuccess, setUserInfo } from './authActions';
+import {
+  SET_AUTH,
+  SET_ERROR,
+  SET_LOADING,
+  SET_REG_ERROR,
+  SET_SUCCESS_REG,
+  SET_USER_DATA,
+  SET_USER_INFO,
+} from './authTypes';
 
 let initialState = {
   isAuth: false,
@@ -67,60 +70,11 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setAuthUserData = (username, email, password) => {
-  return {
-    type: SET_USER_DATA,
-    payload: { username, email, password },
-  };
-};
-
-export const setAuth = (bool) => {
-  return {
-    type: SET_AUTH,
-    payload: bool,
-  };
-};
-
-export const setError = (error) => {
-  return {
-    type: SET_ERROR,
-    payload: error,
-  };
-};
-
-export const setRegError = (error) => {
-  return {
-    type: SET_REG_ERROR,
-    payload: error,
-  };
-};
-
-export const setRegSuccess = (bool) => {
-  return {
-    type: SET_SUCCESS_REG,
-    payload: bool,
-  };
-};
-
-export const setUserInfo = (userInfo) => {
-  return {
-    type: SET_USER_INFO,
-    payload: userInfo,
-  };
-};
-
-export const setLoading = (bool) => {
-  return {
-    type: SET_LOADING,
-    payload: bool,
-  };
-};
-
 export const signup = (username, email, password, history) => {
   return (dispatch) => {
     dispatch(setRegError(null));
-    AuthAPI.registration(username, email, password)
-      .then((response) => {
+    AuthService.registration(username, email, password)
+      .then(() => {
         dispatch(setRegSuccess(true));
         history.push('/login');
       })
@@ -137,9 +91,9 @@ export const login = (email, password, history) => {
     dispatch(setLoading(true));
     dispatch(setError(null));
     dispatch(setRegSuccess(false));
-    AuthAPI.login(email, password)
+    AuthService.login(email, password)
       .then((response) => {
-        localStorage.setItem('token', response.access);
+        localStorage.setItem('token', response.data.access);
         dispatch(setAuth(true));
         dispatch(setError(null));
         history.push('/');
@@ -158,7 +112,6 @@ export const login = (email, password, history) => {
 
 export const checkAuth = (history) => {
   return (dispatch) => {
-    debugger;
     dispatch(setLoading(true));
     if (localStorage.getItem('token')) {
       dispatch(setAuth(true));
@@ -173,7 +126,7 @@ export const checkAuth = (history) => {
 //Testing
 
 export const logout = () => {
-  return (dispatch) => {
+  return () => {
     localStorage.removeItem('token');
   };
 };
@@ -185,8 +138,6 @@ export const getUserInfo = () => {
       dispatch(setUserInfo(response.data.username));
       dispatch(setLoading(false));
     });
-    debugger;
-    // console.log(e);
   };
 };
 

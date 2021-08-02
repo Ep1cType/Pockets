@@ -1,9 +1,12 @@
+import cnBind from 'classnames/bind';
 import React from 'react';
 
 import FormInput from '../FormInput/FormInput';
 import FormSubmit from '../FormSubmit/FormSubmit';
 
 import s from './RegistrationForm.module.scss';
+
+const cx = cnBind.bind(s);
 
 const RegistrationForm = ({
   handleSubmit,
@@ -18,18 +21,34 @@ const RegistrationForm = ({
   setCheck,
   isLoading,
 }) => {
+  let emailClass = cx({
+    label: true,
+    label__email: true,
+  });
+  let passwordClass = cx({
+    label: true,
+    label__password: true,
+  });
+  let usernameClass = cx({
+    label: true,
+    label__username: true,
+  });
+  let checkboxClass = cx({
+    registrationForm_input: true,
+  });
+
   return (
-    <form className={s.form_inputs} onSubmit={handleSubmit}>
-      <label>Username</label>
-      {regError ? <span>{regError.username}</span> : null}
+    <form className={s.registrationForm} onSubmit={handleSubmit}>
+      <label className={usernameClass}>Username</label>
+      {regError ? <span className={s.registrationForm_input__error}>{regError.username}</span> : null}
       <FormInput inputType="username" value={username} setValue={setUsername} />
-      <label>Email</label>
-      {regError ? <span>{regError.email}</span> : null}
+      <label className={emailClass}>Email</label>
+      {regError ? <span className={s.registrationForm_input__error}>{regError.email}</span> : null}
       <FormInput inputType="email" value={email} setValue={setEmail} />
-      <label>Password</label>
-      {regError ? <span>{regError.password}</span> : null}
+      <label className={passwordClass}>Password</label>
+      {regError ? <span className={s.registrationForm_input__error}>{regError.password}</span> : null}
       <FormInput inputType="password" value={password} setValue={setPassword} />
-      <div className={s.input_checkbox}>
+      <div className={checkboxClass}>
         <FormInput inputType="checkbox" value={check} setValue={setCheck} />
         <label>Я со всем согласен отпутите</label>
       </div>

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import $api from '../http';
+import $api from '../api';
 
 export default class UserService {
   static fetchUsers(): Promise<AxiosResponse> {

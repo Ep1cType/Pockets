@@ -1,4 +1,4 @@
-input[type = "email"],[type = "password"] {
+input[type = "email"],[type = "password"],[type = "username"] {
   width: 342px;
   height: 38px;
   border: 1px solid #d8d6de;
@@ -14,4 +14,13 @@ input[type = "email"],[type = "password"] {
 
 input[type = "password"] {
   margin-bottom: 39px;
+}
+
+input[type = "checkbox"] {
+  height: 18px;
+  width: 18px;
+  outline: none;
+  border: 1px solid #d8d6de;
+  border-radius: 3px;
+  margin-right: 16px;
 }

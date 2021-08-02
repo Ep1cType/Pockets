@@ -7,7 +7,8 @@ import FormText from '../../components/AuthComponents/FormText/FormText';
 import LoginForm from '../../components/AuthComponents/LoginForm/LoginForm';
 import Logo from '../../components/AuthComponents/Logo/Logo';
 import { REGISTRATION_ROUTE } from '../../constants/consts';
-import { login, setRegError } from '../../reducers/authReducer';
+import { setRegError } from '../../store/auth/authActions';
+import { login } from '../../store/auth/authReducer';
 
 import s from './LoginPage.module.scss';
 
@@ -32,21 +33,23 @@ const Login = () => {
   };
 
   return (
-    <div className={s.login_wrapper}>
-      <div className={s.login_form}>
-        <Logo />
-        <FormText title="Welcome to Pockets! 👋🏻" subtitle="Please sign-in to your account and start the adventure" />
-        <LoginForm
-          handleSubmit={handleSubmit}
-          error={error}
-          accessReg={accessReg}
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          isLoading={isLoading}
-        />
-        <FormFooter footerText="New on our platform?" footerTextLink="Create an account" route={REGISTRATION_ROUTE} />
+    <div className={s.loginPage}>
+      <div className={s.login}>
+        <div className={s.login__content}>
+          <Logo />
+          <FormText title="Welcome to Pockets! 👋🏻" subtitle="Please sign-in to your account and start the adventure" />
+          <LoginForm
+            handleSubmit={handleSubmit}
+            error={error}
+            accessReg={accessReg}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            isLoading={isLoading}
+          />
+          <FormFooter footerText="New on our platform?" footerTextLink="Create an account" route={REGISTRATION_ROUTE} />
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,8 @@ import FormText from '../../components/AuthComponents/FormText/FormText';
 import Logo from '../../components/AuthComponents/Logo/Logo';
 import RegistrationForm from '../../components/AuthComponents/RegistrationForm/RegistrationForm';
 import { LOGIN_ROUTE } from '../../constants/consts';
-import { setError, signup } from '../../reducers/authReducer';
+import { setError } from '../../store/auth/authActions';
+import { signup } from '../../store/auth/authReducer';
 
 import s from './RegistrationPage.module.scss';
 
@@ -33,24 +34,26 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className={s.registration_wrapper}>
-      <div className={s.registration_form}>
-        <Logo />
-        <FormText title="Adventure starts here" subtitle="Make your app management easy and fun!" />
-        <RegistrationForm
-          handleSubmit={handleSubmit}
-          regError={regError}
-          username={username}
-          email={email}
-          password={password}
-          check={check}
-          setUsername={setUsername}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          setCheck={setCheck}
-          isLoading={isLoading}
-        />
-        <FormFooter footerText="Already have an account ?" footerTextLink="Sign in instead" route={LOGIN_ROUTE} />
+    <div className={s.registrationPage}>
+      <div className={s.registration}>
+        <div className={s.registration__content}>
+          <Logo />
+          <FormText title="Adventure starts here" subtitle="Make your app management easy and fun!" />
+          <RegistrationForm
+            handleSubmit={handleSubmit}
+            regError={regError}
+            username={username}
+            email={email}
+            password={password}
+            check={check}
+            setUsername={setUsername}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            setCheck={setCheck}
+            isLoading={isLoading}
+          />
+          <FormFooter footerText="Already have an account ?" footerTextLink="Sign in instead" route={LOGIN_ROUTE} />
+        </div>
       </div>
     </div>
   );

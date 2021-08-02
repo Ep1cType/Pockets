@@ -1,9 +1,9 @@
-.form_footer {
-  span {
+.formFooter {
+  &__text {
     margin-right: 10px;
     color: #6E6B7B;
   }
-  .link {
+  &__link {
     color: #7367F0;
     text-decoration: none;
   }
