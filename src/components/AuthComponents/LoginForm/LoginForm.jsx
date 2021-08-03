@@ -1,4 +1,4 @@
-import cn from 'classnames/bind';
+import cn from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -13,10 +13,10 @@ const LoginForm = ({ handleSubmit, error, accessReg, email, setEmail, password, 
 
   return (
     <form className={s.loginForm} onSubmit={handleSubmit}>
-      {error?.detail ? <span className={s.loginForm_error__submit}>{error.detail}</span> : null}
-      {accessReg && <span className={s.loginForm_registration__success}>Account Created ! Login:</span>}
+      {error?.detail && <span className={s.loginForm_wrongUser}>{error.detail}</span>}
+      {accessReg && <span className={s.loginForm_success}>Account Created ! Login:</span>}
       <label className={emailClass}>Email</label>
-      {error ? <span className={s.loginForm_error__input}>{error.email}</span> : null}
+      {error && <span className={s.loginForm_error}>{error.email}</span>}
       <FormInput inputType="email" value={email} setValue={setEmail} />
       <label className={passwordClass}>
         <span>Password</span>
@@ -24,7 +24,7 @@ const LoginForm = ({ handleSubmit, error, accessReg, email, setEmail, password, 
           Forgot Password?
         </NavLink>
       </label>
-      {error ? <span className={s.loginForm_error__input}>{error.password}</span> : null}
+      {error && <span className={s.loginForm_error}>{error.password}</span>}
       <FormInput inputType="password" value={password} setValue={setPassword} />
       <FormSubmit value="Login" isLoading={isLoading} />
     </form>

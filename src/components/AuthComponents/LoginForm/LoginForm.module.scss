@@ -5,16 +5,16 @@
   align-items: stretch;
   font-family: 'Montserrat', sans-serif;
 
-  &_error__input {
+  &_error {
     font-size: 10px;
     margin: 5px 0;
     color: red;
   }
-  &_error__submit {
+  &_wrongUser {
     color: red;
     margin-top: 10px;
   }
-  &_registration__success {
+  &_success {
     color: green;
     margin-bottom: 10px;
     margin-top: 20px;

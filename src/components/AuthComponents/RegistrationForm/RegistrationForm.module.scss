@@ -6,7 +6,7 @@
   font-family: 'Montserrat', sans-serif;
   margin-top: 21px;
 
-  &_error__input {
+  &_error {
     font-size: 10px;
     margin: 5px 0;
     color: red;
@@ -28,13 +28,13 @@
     font-weight: 400;
     color: #6E6B7B;
     margin-bottom: 2px;
-    &__email {
+    &_email {
       margin-bottom: 2px;
     }
-    &__password {
+    &_password {
       margin-bottom: 2px;
     }
-    &__username {
+    &_username {
       text-decoration: none;
     }
   }

@@ -19,23 +19,22 @@ const RegistrationForm = ({
   setCheck,
   isLoading,
 }) => {
-  let emailClass = cn(s.label, s.label__email);
-  let passwordClass = cn(s.label, s.label__password);
-  let usernameClass = cn(s.label, s.label__username);
-  let checkboxClass = cn(s.registrationForm_input);
+  let emailClass = cn(s.label, s.label_email);
+  let passwordClass = cn(s.label, s.label_password);
+  let usernameClass = cn(s.label, s.label_username);
 
   return (
     <form className={s.registrationForm} onSubmit={handleSubmit}>
       <label className={usernameClass}>Username</label>
-      {regError ? <span className={s.registrationForm_error__input}>{regError.username}</span> : null}
+      {regError && <span className={s.registrationForm_error}>{regError.username}</span>}
       <FormInput inputType="username" value={username} setValue={setUsername} />
       <label className={emailClass}>Email</label>
-      {regError ? <span className={s.registrationForm_error__input}>{regError.email}</span> : null}
+      {regError && <span className={s.registrationForm_error}>{regError.email}</span>}
       <FormInput inputType="email" value={email} setValue={setEmail} />
       <label className={passwordClass}>Password</label>
-      {regError ? <span className={s.registrationForm_error__input}>{regError.password}</span> : null}
+      {regError && <span className={s.registrationForm_error}>{regError.password}</span>}
       <FormInput inputType="password" value={password} setValue={setPassword} />
-      <div className={checkboxClass}>
+      <div className={s.registrationForm_input}>
         <FormInput inputType="checkbox" value={check} setValue={setCheck} />
         <label>Я со всем согласен отпутите</label>
       </div>
