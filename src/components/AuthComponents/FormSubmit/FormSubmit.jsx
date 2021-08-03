@@ -1,15 +1,10 @@
-import cnBind from 'classnames/bind';
+import cn from 'classnames';
 import React from 'react';
 
-import s from './FormSubmit.module.scss';
-
-const cx = cnBind.bind(s);
+import './FormSubmit.scss';
 
 const FormSubmit = ({ value, isLoading }) => {
-  let classname = cx({
-    formSubmit: true,
-    formSubmit__loading: isLoading,
-  });
+  let classname = cn('formSubmit', { formSubmit__loading: isLoading });
 
   return <input className={classname} type="submit" value={value} />;
 };

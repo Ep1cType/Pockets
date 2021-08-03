@@ -73,15 +73,18 @@ const authReducer = (state = initialState, action) => {
 export const signup = (username, email, password, history) => {
   return (dispatch) => {
     dispatch(setRegError(null));
+    dispatch(setLoading(true));
     AuthService.registration(username, email, password)
       .then(() => {
         dispatch(setRegSuccess(true));
         history.push('/login');
+        dispatch(setLoading(false));
       })
       .catch((err) => {
         if (err.response.status === 400) {
           dispatch(setRegError(err.response.data));
         }
+        dispatch(setLoading(false));
       });
   };
 };

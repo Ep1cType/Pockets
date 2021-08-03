@@ -5,13 +5,12 @@
   align-items: stretch;
   font-family: 'Montserrat', sans-serif;
 
-  &_input__error {
+  &_error__input {
     font-size: 10px;
     margin: 5px 0;
     color: red;
   }
-
-  &_submit__error {
+  &_error__submit {
     color: red;
     margin-top: 10px;
   }
@@ -44,4 +43,3 @@
     }
   }
 }
-//
