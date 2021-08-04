@@ -1,15 +1,16 @@
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import { PATHS } from '../constants';
-import { Preview } from '../views';
+import { publicRoutes } from '../constants';
+import { MAIN_ROUTE } from '../constants/consts';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact={true} path={PATHS.root} component={Preview} />
-
-        <Redirect to={PATHS.root} />
+        {publicRoutes.map(({ path, Component }) => (
+          <Route key={path} path={path} component={Component} exact />
+        ))}
+        <Redirect to={MAIN_ROUTE} />
       </Switch>
     </BrowserRouter>
   );

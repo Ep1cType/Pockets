@@ -1,0 +1,39 @@
+.loginForm {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: 'Montserrat', sans-serif;
+
+  &_error {
+    font-size: 10px;
+    margin: 5px 0;
+    color: red;
+  }
+  &_wrongUser {
+    color: red;
+    margin-top: 10px;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6E6B7B;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: fit-content;
+
+  &__email {
+    margin-top: 21px;
+    margin-bottom: 2px;
+  }
+  &__password {
+    margin-bottom: 2px;
+  }
+  &__link {
+    color: #7367F0;
+    text-decoration: none;
+  }
+}
