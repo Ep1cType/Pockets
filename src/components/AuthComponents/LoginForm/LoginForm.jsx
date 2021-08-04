@@ -7,14 +7,13 @@ import FormSubmit from '../FormSubmit/FormSubmit';
 
 import s from './LoginForm.module.scss';
 
-const LoginForm = ({ handleSubmit, error, accessReg, email, setEmail, password, setPassword, isLoading }) => {
+const LoginForm = ({ handleSubmit, error, email, setEmail, password, setPassword, isLoading }) => {
   let emailClass = cn(s.label, s.label__email);
   let passwordClass = cn(s.label, s.label__password);
 
   return (
     <form className={s.loginForm} onSubmit={handleSubmit}>
       {error?.detail && <span className={s.loginForm_wrongUser}>{error.detail}</span>}
-      {accessReg && <span className={s.loginForm_success}>Account Created ! Login:</span>}
       <label className={emailClass}>Email</label>
       {error && <span className={s.loginForm_error}>{error.email}</span>}
       <FormInput inputType="email" value={email} setValue={setEmail} />

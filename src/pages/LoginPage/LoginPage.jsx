@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import FormFooter from '../../components/AuthComponents/FormFooter/FormFooter';
@@ -7,8 +7,8 @@ import FormText from '../../components/AuthComponents/FormText/FormText';
 import LoginForm from '../../components/AuthComponents/LoginForm/LoginForm';
 import Logo from '../../components/AuthComponents/Logo/Logo';
 import { REGISTRATION_ROUTE } from '../../constants/consts';
-import { setRegError } from '../../store/auth/authActions';
-import { login } from '../../store/auth/authReducer';
+import AuthService from '../../services/AuthService';
+import { setAuth } from '../../store/auth/authActions';
 
 import s from './LoginPage.module.scss';
 
@@ -16,20 +16,26 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const error = useSelector((state) => state.authPage.error);
-  const accessReg = useSelector((state) => state.authPage.accessReg);
-  const isLoading = useSelector((state) => state.authPage.isLoading);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    dispatch(setRegError(null));
-  }, []);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password, history));
+    setIsLoading(true);
+    AuthService.login(email, password)
+      .then((response) => {
+        localStorage.setItem('token', response.data.access);
+        dispatch(setAuth(true));
+        setError(null);
+        history.push('/');
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.response.data);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -41,7 +47,6 @@ const Login = () => {
           <LoginForm
             handleSubmit={handleSubmit}
             error={error}
-            accessReg={accessReg}
             email={email}
             setEmail={setEmail}
             password={password}

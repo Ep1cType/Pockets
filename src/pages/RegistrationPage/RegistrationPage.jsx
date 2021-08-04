@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import FormFooter from '../../components/AuthComponents/FormFooter/FormFooter';
 import FormText from '../../components/AuthComponents/FormText/FormText';
 import Logo from '../../components/AuthComponents/Logo/Logo';
 import RegistrationForm from '../../components/AuthComponents/RegistrationForm/RegistrationForm';
 import { LOGIN_ROUTE } from '../../constants/consts';
-import { setError } from '../../store/auth/authActions';
-import { signup } from '../../store/auth/authReducer';
+import AuthService from '../../services/AuthService';
 
 import s from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const regError = useSelector((state) => state.authPage.regError);
-  const isLoading = useSelector((state) => state.authPage.isLoading);
-
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [check, setCheck] = useState(false);
-
-  useEffect(() => {
-    dispatch(setError(null));
-  }, []);
+  const [error, setError] = useState(null);
+  const [successfulReg, setSuccessfulReg] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signup(username, email, password, history));
+    setIsLoading(true);
+    AuthService.registration(username, email, password)
+      .then(() => {
+        setError(null);
+        setSuccessfulReg(true);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.response.data);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -41,7 +41,7 @@ const RegistrationPage = () => {
           <FormText title="Adventure starts here" subtitle="Make your app management easy and fun!" />
           <RegistrationForm
             handleSubmit={handleSubmit}
-            regError={regError}
+            regError={error}
             username={username}
             email={email}
             password={password}
@@ -51,6 +51,7 @@ const RegistrationPage = () => {
             setPassword={setPassword}
             setCheck={setCheck}
             isLoading={isLoading}
+            successfulReg={successfulReg}
           />
           <FormFooter footerText="Already have an account ?" footerTextLink="Sign in instead" route={LOGIN_ROUTE} />
         </div>

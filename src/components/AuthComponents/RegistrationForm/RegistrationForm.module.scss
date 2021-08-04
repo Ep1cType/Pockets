@@ -6,6 +6,12 @@
   font-family: 'Montserrat', sans-serif;
   margin-top: 21px;
 
+  &_success {
+    color: green;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
   &_error {
     font-size: 10px;
     margin: 5px 0;
@@ -15,28 +21,26 @@
     display: flex;
     align-items: center;
     margin-bottom: 14px;
-
-    label {
-      font-size: 14px;
-      line-height: 21px;
-      color: #7367F0;
-    }
   }
+  &_label {
+    font-size: 14px;
+    line-height: 21px;
+    color: #7367F0;
+  }
+}
 
-  .label {
-    font-size: 12px;
-    font-weight: 400;
-    color: #6E6B7B;
+.label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6E6B7B;
+  margin-bottom: 2px;
+  &_email {
     margin-bottom: 2px;
-    &_email {
-      margin-bottom: 2px;
-    }
-    &_password {
-      margin-bottom: 2px;
-    }
-    &_username {
-      text-decoration: none;
-    }
   }
-
+  &_password {
+    margin-bottom: 2px;
+  }
+  &_username {
+    text-decoration: none;
+  }
 }

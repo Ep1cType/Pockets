@@ -3,14 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Root from '../../components/MainComponents/Root/Root';
-import { checkAuth, logout } from '../../store/auth/authReducer';
+import { setAuth } from '../../store/auth/authActions';
+import { logout } from '../../store/auth/authReducer';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(checkAuth(history));
+    if (localStorage.getItem('token')) {
+      dispatch(setAuth(true));
+    } else {
+      history.push('/login');
+    }
   }, []);
 
   const isAuth = useSelector((state) => state.authPage.isAuth);
