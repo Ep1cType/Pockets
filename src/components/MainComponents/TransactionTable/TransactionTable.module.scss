@@ -1,0 +1,30 @@
+.transactionTable {
+  margin-right: 22px;
+  &__header {
+    background-color: #F3F2F7;
+    height: 37px;
+    width: 572px;
+    border-top-left-radius: 6px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid #E9ECEF;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 16px;
+    }
+  }
+  &__list {
+    height: 419px;
+    overflow-y: scroll;
+  }
+  &__item {
+    height: 60px;
+    background-color: #F8F9FD;
+    border-bottom: 2px solid #E9ECEF;
+  }
+}

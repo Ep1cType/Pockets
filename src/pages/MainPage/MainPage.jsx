@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import Root from '../../components/MainComponents/Root/Root';
+import './MainPage.scss';
+import CategoriesTable from '../../components/MainComponents/CategoriesTable/CategoriesTable';
+import TransactionTable from '../../components/MainComponents/TransactionTable/TransactionTable';
 import { setAuth } from '../../store/auth/authActions';
-import { logout } from '../../store/auth/authReducer';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('access_token')) {
       dispatch(setAuth(true));
     } else {
       history.push('/login');
@@ -20,17 +21,19 @@ const MainPage = () => {
 
   const isAuth = useSelector((state) => state.authPage.isAuth);
 
-  const handle = () => {
-    dispatch(logout());
-    history.push('/login');
-  };
-
   return (
     <>
       {isAuth && (
-        <div>
-          <span>WELCOME</span>
-          <Root handle={handle} />
+        <div className="mainPage">
+          <div className="leftMenu">
+            <div className="logo">
+              <span className="logo__text">Pockets</span>
+            </div>
+            <div className="tables">
+              <TransactionTable />
+              <CategoriesTable />
+            </div>
+          </div>
         </div>
       )}
     </>

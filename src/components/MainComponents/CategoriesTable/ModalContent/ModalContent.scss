@@ -1,0 +1,58 @@
+.modalContent {
+  &__label {
+    font-size: 34px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 27px;
+    padding: 31px 70px 0 70px;
+  }
+  &__toggle {
+    display: flex;
+    margin-bottom: 38px;
+
+    &_item {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+      cursor: pointer;
+
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: #5D5FEF;
+    }
+
+    .item_1 {
+      margin-right: 24px;
+    }
+
+    .categoryType {
+      transition: .5s ease-in-out;
+      background-color: #5D5FEF;
+      color: #FFF;
+    }
+  }
+  &__error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  &__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      padding: 2px;
+      width: 300px;
+      text-align: center;
+      color: #6E6B7B;
+      font-size: 18px;
+      line-height: 24px;
+
+      border: none;
+      height: 40px;
+      outline: none;
+      margin-bottom: 20px;
+    }
+  }
+}

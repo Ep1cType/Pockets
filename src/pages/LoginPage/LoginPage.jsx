@@ -26,7 +26,8 @@ const Login = () => {
     setIsLoading(true);
     AuthService.login(email, password)
       .then((response) => {
-        localStorage.setItem('token', response.data.access);
+        localStorage.setItem('access_token', response.data.access);
+        localStorage.setItem('refresh_token', response.data.refresh);
         dispatch(setAuth(true));
         setError(null);
         history.push('/');

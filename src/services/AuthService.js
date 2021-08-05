@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 
+import $api from '../api';
 import instance from '../api/api';
 
 export default class AuthService {
@@ -8,5 +9,8 @@ export default class AuthService {
   }
   static registration(username, email, password): Promise<AxiosResponse> {
     return instance.post('auth/register/', { username, email, password });
+  }
+  static refresh(refresh): Promise<AxiosResponse> {
+    return $api.post('/auth/token/refresh/', { refresh });
   }
 }
