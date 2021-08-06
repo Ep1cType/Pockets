@@ -15,11 +15,9 @@ const ModalWindow = ({ active, buttonLabel, handleSubmit, closeModal, children }
               <img onClick={closeModal} className={s.modal__button_close} src={closeButton} alt="#" />
             </div>
             {children}
-            <div className={s.modal__button}>
-              <button className={s.modal__button_ok} onClick={handleSubmit}>
-                {buttonLabel}
-              </button>
-            </div>
+            <button className={s.modal__button_ok} onClick={handleSubmit}>
+              {buttonLabel}
+            </button>
           </div>
         </div>
       )}

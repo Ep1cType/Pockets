@@ -7,13 +7,13 @@ import s from './TransactionTable.module.scss';
 const TransactionTable = () => {
   return (
     <div className={s.transactionTable}>
-      <div className={s.transactionTable__header}>
-        <span>ДАТА</span>
-        <span>КАТЕГОРИЯ</span>
-        <span>СУММА</span>
-        <div className={s.transactionTable__button}>
-          <img src={addData} alt="#" />
-          <span>Add data</span>
+      <div className={s.header}>
+        <span className={s.header__text}>ДАТА</span>
+        <span className={s.header__text}>КАТЕГОРИЯ</span>
+        <span className={s.header__text}>СУММА</span>
+        <div className={s.button}>
+          <img className={s.button__img} src={addData} alt="#" />
+          <span className={s.button__text}>Add data</span>
         </div>
       </div>
       <ul className={s.transactionTable__list}></ul>

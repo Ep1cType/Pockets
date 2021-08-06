@@ -5,11 +5,11 @@ import s from './ModalContent.module.scss';
 
 const ModalContent = ({ categoryType, setCategoryType, error, categoryValue, setCategoryValue }) => {
   let expensesClass = cn(
-    { [`${s.toggle__item}`]: true },
-    { [`${s.toggle__item_left}`]: true },
-    { [`${s.toggle__item_active}`]: categoryType === 'expense' }
+    { [s.toggle__item]: true },
+    { [s.toggle__item_left]: true },
+    { [s.toggle__item_active]: categoryType === 'expense' }
   );
-  let incomeClass = cn({ [`${s.toggle__item}`]: true }, { [`${s.toggle__item_active}`]: categoryType === 'income' });
+  let incomeClass = cn({ [s.toggle__item]: true }, { [s.toggle__item_active]: categoryType === 'income' });
 
   return (
     <>
