@@ -1,16 +1,20 @@
 import cn from 'classnames';
 import React from 'react';
 
-import './ModalContent.scss';
+import s from './ModalContent.module.scss';
 
 const ModalContent = ({ categoryType, setCategoryType, error, categoryValue, setCategoryValue }) => {
-  let expensesClass = cn('modalContent__toggle_item', 'item_1', { categoryType: categoryType === 'expense' });
-  let incomeClass = cn('modalContent__toggle_item', { categoryType: categoryType === 'income' });
+  let expensesClass = cn(
+    { [`${s.toggle__item}`]: true },
+    { [`${s.toggle__item_left}`]: true },
+    { [`${s.toggle__item_active}`]: categoryType === 'expense' }
+  );
+  let incomeClass = cn({ [`${s.toggle__item}`]: true }, { [`${s.toggle__item_active}`]: categoryType === 'income' });
 
   return (
     <>
-      <div className="modalContent__label">Добавить данные</div>
-      <div className="modalContent__toggle">
+      <div className={s.modalContent__label}>Добавить данные</div>
+      <div className={s.toggle}>
         <div className={expensesClass} onClick={() => setCategoryType('expense')}>
           Расходы
         </div>
@@ -18,9 +22,10 @@ const ModalContent = ({ categoryType, setCategoryType, error, categoryValue, set
           Доходы
         </div>
       </div>
-      {error?.name && <span className="modalContent__error">{error.name}</span>}
-      <div className="modalContent__input">
+      {error?.name && <span className={s.modalContent__error}>{error.name}</span>}
+      <div className={s.modalContent__input}>
         <input
+          className={s.input}
           type="text"
           placeholder="Категория"
           value={categoryValue}

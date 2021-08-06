@@ -16,20 +16,7 @@ const TransactionTable = () => {
           <span>Add data</span>
         </div>
       </div>
-      <ul className={s.transactionTable__list}>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-        <li className={s.transactionTable__item}>plug</li>
-      </ul>
+      <ul className={s.transactionTable__list}></ul>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesService from '../../../services/CaregoriesService';
 import { setCategoriesList } from '../../../store/categories/categoriesActions';
-import ModalWindow from '../ModalWindow/ModaWindow';
+import ModalWindow from '../Modal/Modal';
 
 import s from './CategoriesTable.module.scss';
 import CategoriesTableHeader from './CategoriesTableHeader/CategoriesTableHeader';

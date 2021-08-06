@@ -1,15 +1,15 @@
 import cn from 'classnames';
 import React from 'react';
 
-import './CategoryItem.scss';
+import styles from './CategoryItem.module.scss';
 
 const CategoryItem = ({ name, category_type }) => {
   return (
-    <li className="categoryItem">
-      <div className="categoryItem__left">
-        <span className={cn({ categoryItem__left_income: category_type === 'income' })}>{name}</span>
+    <li className={styles.categoryItem}>
+      <div className={styles.categoryItem__left}>
+        <span className={cn({ [`${styles.categoryItem__left_income}`]: category_type === 'income' })}>{name}</span>
       </div>
-      <div className="categoryItem__right"></div>
+      <div className={styles.categoryItem__right}></div>
     </li>
   );
 };

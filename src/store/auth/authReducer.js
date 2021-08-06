@@ -1,4 +1,3 @@
-import AuthService from '../../services/AuthService';
 import UserService from '../../services/UserService';
 
 import { setUserInfo } from './authActions';
@@ -27,19 +26,6 @@ const authReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-//Testing
-
-// export const refreshTokens = () => {
-//   return (dispatch) => {
-//     AuthService.refresh(localStorage.getItem('refresh_token'))
-//       .then((response) => {
-//         localStorage.setItem('access_token', response.data.access);
-//         localStorage.setItem('refresh_token', response.data.refresh);
-//       })
-//       .then((err) => {});
-//   };
-// };
 
 export const logout = () => {
   return () => {
