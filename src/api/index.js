@@ -19,14 +19,16 @@ $api.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && error.config && !error.config._isRetry) {
       originalRequest._isRetry = true;
-      try {
-        const response = await AuthService.refresh(localStorage.getItem('refresh_token'));
-        localStorage.setItem('access_token', response.data.access);
-        localStorage.setItem('refresh_token', response.data.refresh);
-        return $api.request(originalRequest);
-      } catch (e) {
-        console.log('UNAUTORIZE');
-      }
+      AuthService.refresh(localStorage.getItem('refresh_token'))
+        .then((response) => {
+          localStorage.setItem('access_token', response.data.access);
+          localStorage.setItem('refresh_token', response.data.refresh);
+          return $api.request(originalRequest);
+        })
+        .catch((err) => {
+          localStorage.clear();
+          window.location = '/login';
+        });
     }
     throw error;
   }

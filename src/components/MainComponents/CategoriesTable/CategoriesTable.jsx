@@ -62,7 +62,6 @@ const CategoriesTable = () => {
       .catch((err) => {
         setError(err.response.data);
       });
-    setCategoryValue('');
   };
 
   if (isLoading) {

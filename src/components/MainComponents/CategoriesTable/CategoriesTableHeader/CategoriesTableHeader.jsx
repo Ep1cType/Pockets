@@ -8,8 +8,8 @@ const CategoriesTableHeader = ({ openModal }) => {
   return (
     <div className={s.header}>
       <span className={s.header__text}>Summary</span>
-      <div className={s.button}>
-        <img className={s.button__img} onClick={openModal} src={addButton} alt="#" />
+      <div className={s.button} onClick={openModal}>
+        <img className={s.button__img} src={addButton} alt="#" />
         <span className={s.button__text}>Add category</span>
       </div>
     </div>

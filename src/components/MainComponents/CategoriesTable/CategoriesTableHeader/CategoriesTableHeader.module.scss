@@ -16,6 +16,10 @@
 .button {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  :hover {
+    color: rgba(93, 95, 239, 0.7);
+  }
 
   &__img {
     margin-right: 16px;
@@ -26,5 +30,6 @@
     line-height: 24px;
     font-weight: 400;
     color: #5D5FEF;
+
   }
 }
