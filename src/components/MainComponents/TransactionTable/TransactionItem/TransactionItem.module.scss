@@ -1,0 +1,38 @@
+.transactionItem {
+  height: 60px;
+  background-color: #F8F9FD;
+  border-bottom: 2px solid #E9ECEF;
+  display: flex;
+  padding: 0 32px;
+  align-items: center;
+
+  &__status {
+    &_ok {
+      color: #28C76F;
+    }
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    &_data {
+      width: 122px;
+      font-weight: 600;
+    }
+    &_category {
+      width: 170px;
+    }
+    &_sum {
+      width: 138px;
+      font-weight: 600;
+    }
+  }
+  &__img {
+    &_edit {
+      cursor: pointer;
+      margin-right: 30px;
+    }
+    &_delete {
+      cursor: pointer;
+    }
+  }
+}
