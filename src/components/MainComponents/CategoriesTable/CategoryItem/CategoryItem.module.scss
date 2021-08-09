@@ -1,0 +1,29 @@
+.categoryItem {
+  height: 34px;
+  padding: 0 27px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-right: 2px solid #E9ECEF;
+
+    &_income {
+      color: #28C76F;
+    }
+  }
+  &__right {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

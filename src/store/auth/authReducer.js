@@ -27,11 +27,9 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-//Testing
-
 export const logout = () => {
   return () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
   };
 };
 
