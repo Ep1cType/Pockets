@@ -1,0 +1,33 @@
+.TransactionTableHeader {
+  background-color: #F3F2F7;
+  height: 37px;
+  width: 572px;
+  border-top-left-radius: 6px;
+  display: flex;
+  padding: 0 32px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #E9ECEF;
+
+  &__text {
+    font-size: 12px;
+    line-height: 14.63px;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__img {
+    margin-right: 16px;
+  }
+  &__text {
+    color: #5D5FEF;
+    font-size: 10px;
+    line-height: 24px;
+  }
+}

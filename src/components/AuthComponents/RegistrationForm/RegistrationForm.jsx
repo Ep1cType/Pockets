@@ -20,20 +20,16 @@ const RegistrationForm = ({
   isLoading,
   successfulReg,
 }) => {
-  let emailClass = cn(s.label, s.label_email);
-  let passwordClass = cn(s.label, s.label_password);
-  let usernameClass = cn(s.label, s.label_username);
-
   return (
     <form className={s.registrationForm} onSubmit={handleSubmit}>
       {successfulReg && <span className={s.registrationForm_success}>Registration was successful !</span>}
-      <label className={usernameClass}>Username</label>
+      <label className={cn(s.label, s.label_username)}>Username</label>
       {regError && <span className={s.registrationForm_error}>{regError.username}</span>}
       <FormInput inputType="username" value={username} setValue={setUsername} />
-      <label className={emailClass}>Email</label>
+      <label className={cn(s.label, s.label_email)}>Email</label>
       {regError && <span className={s.registrationForm_error}>{regError.email}</span>}
       <FormInput inputType="email" value={email} setValue={setEmail} />
-      <label className={passwordClass}>Password</label>
+      <label className={cn(s.label, s.label_password)}>Password</label>
       {regError && <span className={s.registrationForm_error}>{regError.password}</span>}
       <FormInput inputType="password" value={password} setValue={setPassword} />
       <div className={s.registrationForm_input}>

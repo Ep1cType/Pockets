@@ -5,7 +5,7 @@ import closeButton from '../../../assets/img/closeButton.svg';
 
 import s from './Modal.module.scss';
 
-const ModalWindow = ({ active, buttonLabel, handleSubmit, closeModal, children }) => {
+const Modal = ({ active, buttonLabel, handleSubmit, closeModal, children }) => {
   return ReactDOM.createPortal(
     <>
       {active && (
@@ -26,4 +26,4 @@ const ModalWindow = ({ active, buttonLabel, handleSubmit, closeModal, children }
   );
 };
 
-export default ModalWindow;
+export default Modal;

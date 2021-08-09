@@ -1,46 +1,23 @@
 .transactionTable {
   margin-right: 22px;
-
-
   &__list {
     height: 419px;
     overflow-y: scroll;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      width: 0!important;
+    }
   }
-  &__item {
-    height: 60px;
-    background-color: #F8F9FD;
-    border-bottom: 2px solid #E9ECEF;
+  &__loader {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
-}
-
-.header {
-  background-color: #F3F2F7;
-  height: 37px;
-  width: 572px;
-  border-top-left-radius: 6px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border-bottom: 2px solid #E9ECEF;
-
-  &__text {
-    font-size: 12px;
-    line-height: 14.63px;
-    letter-spacing: 1px;
-    font-weight: 600;
-  }
-}
-
-.button {
-  display: flex;
-  align-items: center;
-
-  &__img {
-    margin-right: 16px;
-  }
-  &__text {
-    color: #5D5FEF;
-    font-size: 10px;
-    line-height: 24px;
+  &__footer {
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    position: relative;
+    height: 40px;
+    bottom: 40px;
   }
 }
