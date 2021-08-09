@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TransactionService from '../../../services/TransactionService';
 import { setTransactionsList } from '../../../store/transactions/transactionsActions';
-import Loader from '../Loader/Loader';
 
 import TransactionItem from './TransactionItem/TransactionItem';
 import s from './TransactionTable.module.scss';
@@ -13,7 +12,6 @@ const TransactionTable = () => {
   const dispatch = useDispatch();
   const transactionsList = useSelector((state) => state.transactionsPage.transactionsList);
 
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [offset, setOffset] = useState(0);
   const [fetching, setFetching] = useState(true);
@@ -28,19 +26,16 @@ const TransactionTable = () => {
 
   useEffect(() => {
     if (fetching) {
-      setIsLoading(true);
       TransactionService.getTransactions(offset)
         .then((response) => {
           dispatch(setTransactionsList([...transactionsList, ...response.data.results]));
           setOffset((prevState) => prevState + 20);
           setTotalCount(response.data.count);
           setFetching(false);
-          setIsLoading(false);
         })
         .catch((err) => {
           setError(err.response.data);
           setFetching(false);
-          setIsLoading(false);
         });
     }
   }, [fetching]);
@@ -54,24 +49,18 @@ const TransactionTable = () => {
   return (
     <div className={s.transactionTable}>
       <TransactionTableHeader />
-      {!isLoading ? (
-        <ul className={s.transactionTable__list} onScroll={scrollHandler}>
-          {transactionsList.map((transaction) => (
-            <TransactionItem
-              key={transaction.id}
-              amount={transaction.amount}
-              data={transaction.transaction_date}
-              categoryType={transaction.category.category_type}
-              categoryName={transaction.category.name}
-            />
-          ))}
-        </ul>
-      ) : (
-        <div className={s.transactionTable__loader}>
-          <Loader />
-        </div>
-      )}
-      <div className={s.transactionTable__footer}></div>
+      <ul className={s.transactionTable__list} onScroll={scrollHandler}>
+        {transactionsList.map((transaction) => (
+          <TransactionItem
+            key={transaction.id}
+            amount={transaction.amount}
+            data={transaction.transaction_date}
+            categoryType={transaction.category.category_type}
+            categoryName={transaction.category.name}
+          />
+        ))}
+      </ul>
+      <div className={s.transactionTable__footer} />
     </div>
   );
 };

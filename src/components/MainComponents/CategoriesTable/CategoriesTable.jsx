@@ -91,7 +91,7 @@ const CategoriesTable = () => {
         {categoriesList.length >= 1 &&
           categoriesList.map((el) => <CategoryItem key={el.id} name={el.name} category_type={el.category_type} />)}
       </ul>
-      <div className={s.categoriesTable__footer}></div>
+      <div className={s.categoriesTable__footer} />
     </div>
   );
 };

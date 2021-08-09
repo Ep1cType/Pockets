@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import React from 'react';
 
-import './FormSubmit.scss';
+import s from './FormSubmit.module.scss';
 
 const FormSubmit = ({ value, isLoading }) => (
-  <input className={cn('formSubmit', { formSubmit__loading: isLoading })} type="submit" value={value} />
+  <input className={cn(s.formSubmit, { [s.formSubmit__loading]: isLoading })} type="submit" value={value} />
 );
 
 export default FormSubmit;
