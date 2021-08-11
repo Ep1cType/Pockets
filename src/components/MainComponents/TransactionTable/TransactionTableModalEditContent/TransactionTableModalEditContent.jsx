@@ -19,9 +19,9 @@ const TransactionTableModalEditContent = ({
       {error?.category && <span className={s.editModalContent__error}>{error.category}</span>}
       {error?.amount && <span className={s.editModalContent__error}>{error.amount}</span>}
       {error?.name && <span className={s.editModalContent__error}>{error.name}</span>}
-      <div className={s.modalContentInputs}>
+      <div className={s.editModalContentInputs}>
         <input
-          className={cn(s.modalContentInputs__input, s.modalContentInputs__input_date)}
+          className={cn(s.editModalContentInputs__input, s.editModalContentInputs__input_date)}
           placeholder="Дата"
           type="text"
           onFocus={(e) => (e.currentTarget.type = 'date')}
@@ -30,14 +30,14 @@ const TransactionTableModalEditContent = ({
           value={dateValue}
         />
         <input
-          className={cn(s.modalContentInputs__input, s.modalContentInputs__input_category)}
+          className={cn(s.editModalContentInputs__input, s.editModalContentInputs__input_category)}
           type="text"
           placeholder="Категория"
           value={categoryValue}
           onChange={(e) => setCategoryValue(e.target.value)}
         />
         <input
-          className={cn(s.modalContentInputs__input, s.modalContentInputs__input_amount)}
+          className={cn(s.editModalContentInputs__input, s.editModalContentInputs__input_amount)}
           type="number"
           placeholder="Сумма"
           value={amountValue}

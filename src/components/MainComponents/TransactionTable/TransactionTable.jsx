@@ -33,7 +33,7 @@ const TransactionTable = () => {
   const [categoryValue, setCategoryValue] = useState('');
   const [dateValue, setDateValue] = useState('');
   const [amountValue, setAmountValue] = useState('');
-  const [ID, setID] = useState('');
+  const [transactionID, setTransactionID] = useState('');
   const [categoryID, setCategoryID] = useState('');
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const TransactionTable = () => {
   };
 
   const openEditModal = (id) => {
-    setID(id);
+    setTransactionID(id);
     const selectedItem = transactionsList.find((el) => el.id === id);
     setCategoryID(selectedItem.category.id);
     setCategoryValue(selectedItem.category.name);
@@ -127,7 +127,7 @@ const TransactionTable = () => {
     })
       .then((response) => {
         dispatch(editCategories(response.data));
-        TransactionService.editTransaction(ID, {
+        TransactionService.editTransaction(transactionID, {
           category: categoryID,
           transaction_date: dateValue,
           amount: amountValue,

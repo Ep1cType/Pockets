@@ -20,7 +20,6 @@ const TransactionTableModalContent = ({
     <>
       <div className={s.TransactionTableModalContent__label}>Добавить данные</div>
       <Toggle categoryType={categoryType} setCategoryType={setCategoryType} />
-      {/*{error && <span className={s.TransactionTableModalContent__error}>{error}</span>}*/}
       {error?.transaction_date && (
         <span className={s.TransactionTableModalContent__error}>{error.transaction_date}</span>
       )}
