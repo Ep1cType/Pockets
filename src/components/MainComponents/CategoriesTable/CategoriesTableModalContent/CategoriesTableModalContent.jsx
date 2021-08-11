@@ -1,9 +1,9 @@
 import React from 'react';
 
-import s from './ModalContent.module.scss';
+import s from './CategoriesTableModalContent.module.scss';
 import Toggle from './Toggle/Toggle';
 
-const ModalContent = ({ categoryType, setCategoryType, error, categoryValue, setCategoryValue }) => {
+const CategoriesTableModalContent = ({ categoryType, setCategoryType, error, categoryValue, setCategoryValue }) => {
   return (
     <>
       <div className={s.modalContent__label}>Добавить данные</div>
@@ -22,4 +22,4 @@ const ModalContent = ({ categoryType, setCategoryType, error, categoryValue, set
   );
 };
 
-export default ModalContent;
+export default CategoriesTableModalContent;

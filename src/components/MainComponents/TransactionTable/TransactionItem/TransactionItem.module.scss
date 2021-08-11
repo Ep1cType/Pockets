@@ -26,13 +26,20 @@
       font-weight: 600;
     }
   }
+  &__button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    :hover {
+      opacity: 0.6;
+    }
+  }
   &__img {
     &_edit {
-      cursor: pointer;
       margin-right: 30px;
-    }
-    &_delete {
-      cursor: pointer;
     }
   }
 }

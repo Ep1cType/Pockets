@@ -1,0 +1,55 @@
+.editModalContent {
+  &__label {
+    font-size: 34px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 27px;
+    padding: 31px 70px 0 70px;
+  }
+  &__error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+
+.editModalContentInputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__input {
+    padding: 2px 5px;
+    width: 300px;
+    text-align: center;
+    color: #6E6B7B;
+    font-size: 14px;
+    line-height: 24px;
+
+    border: none;
+    height: 40px;
+    outline: none;
+    margin-bottom: 20px;
+    &_date {
+      width: 150px;
+      :before {
+        content: attr(placeholder) !important;
+        color: #aaa;
+        margin-right: 0.5em;
+      }
+      :focus:before {
+        content: "";
+      }
+      :valid:before {
+        content: "";
+      }
+    }
+    &_category {
+      width: 170px;
+      border-left: 1px solid #E9ECEF;
+      border-right: 1px solid #E9ECEF;
+    }
+    &_amount {
+      width: 150px;
+    }
+  }
+}
