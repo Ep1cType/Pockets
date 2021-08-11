@@ -1,1 +1,2 @@
 export const SET_CATEGORIES = 'SET_CATEGORIES';
+export const EDIT_CATEGORIES = 'EDIT_CATEGORIES';

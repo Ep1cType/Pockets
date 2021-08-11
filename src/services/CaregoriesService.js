@@ -7,4 +7,7 @@ export default class CategoriesService {
   static setCategory(name, category_type) {
     return $api.post('/pockets/categories/', { name, category_type });
   }
+  static editCategory(category_id, newCategory) {
+    return $api.patch(`/pockets/categories/${category_id}/`, newCategory);
+  }
 }

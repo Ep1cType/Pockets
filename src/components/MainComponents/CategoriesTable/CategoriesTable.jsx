@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesService from '../../../services/CaregoriesService';
 import { setCategoriesList } from '../../../store/categories/categoriesActions';
-import ModalWindow from '../Modal/Modal';
+import Modal from '../Modal/Modal';
 
 import s from './CategoriesTable.module.scss';
 import CategoriesTableHeader from './CategoriesTableHeader/CategoriesTableHeader';
+import CategoriesTableModalContent from './CategoriesTableModalContent/CategoriesTableModalContent';
 import CategoriesTableSubheader from './CategoriesTableSubheader/CategoriesTableSubheader';
 import CategoryItem from './CategoryItem/CategoryItem';
-import ModalContent from './ModalContent/ModalContent';
 
 const CategoriesTable = () => {
   const dispatch = useDispatch();
@@ -70,21 +70,21 @@ const CategoriesTable = () => {
 
   return (
     <div className={s.categoriesTable}>
-      <ModalWindow
+      <Modal
         handleSubmit={handleSubmit}
         active={active}
         setActive={setActive}
         closeModal={closeModal}
         buttonLabel="Добавить"
       >
-        <ModalContent
+        <CategoriesTableModalContent
           categoryType={categoryType}
           setCategoryType={setCategoryType}
           error={error}
           categoryValue={categoryValue}
           setCategoryValue={setCategoryValue}
         />
-      </ModalWindow>
+      </Modal>
       <CategoriesTableHeader openModal={openModal} />
       <CategoriesTableSubheader />
       <ul className={s.categoriesList}>
