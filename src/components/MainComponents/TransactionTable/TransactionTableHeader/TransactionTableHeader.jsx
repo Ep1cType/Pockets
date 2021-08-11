@@ -10,10 +10,10 @@ const TransactionTableHeader = ({ openModal }) => {
       <span className={s.TransactionTableHeader__text}>ДАТА</span>
       <span className={s.TransactionTableHeader__text}>КАТЕГОРИЯ</span>
       <span className={s.TransactionTableHeader__text}>СУММА</span>
-      <div className={s.button} onClick={openModal}>
+      <button className={s.button} onClick={openModal}>
         <img className={s.button__img} src={addData} alt="#" />
         <span className={s.button__text}>Add data</span>
-      </div>
+      </button>
     </div>
   );
 };

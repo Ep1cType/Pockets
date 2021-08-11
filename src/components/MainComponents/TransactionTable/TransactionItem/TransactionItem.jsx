@@ -12,18 +12,12 @@ const TransactionItem = ({ amount, data, categoryType, categoryName, id, deleteT
       <span className={cn(s.transactionItem__text, s.transactionItem__text_data)}>{data}</span>
       <span className={cn(s.transactionItem__text, s.transactionItem__text_category)}>{categoryName}</span>
       <span className={cn(s.transactionItem__text, s.transactionItem__text_sum)}>{amount}</span>
-      <img
-        className={cn(s.transactionItem__img, s.transactionItem__img_edit)}
-        src={editButton}
-        alt="#"
-        onClick={() => openEditModal(id)}
-      />
-      <img
-        className={cn(s.transactionItem__img, s.transactionItem__img_delete)}
-        src={deleteButton}
-        alt="#"
-        onClick={() => deleteTransaction(id)}
-      />
+      <button className={s.transactionItem__button} onClick={() => openEditModal(id)}>
+        <img className={cn(s.transactionItem__img, s.transactionItem__img_edit)} src={editButton} alt="#" />
+      </button>
+      <button className={s.transactionItem__button} onClick={() => deleteTransaction(id)}>
+        <img className={cn(s.transactionItem__img, s.transactionItem__img_delete)} src={deleteButton} alt="#" />
+      </button>
     </li>
   );
 };

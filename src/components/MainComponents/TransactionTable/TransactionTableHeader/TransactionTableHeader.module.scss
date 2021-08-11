@@ -22,6 +22,15 @@
   align-items: center;
   cursor: pointer;
 
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  :hover {
+    opacity: 0.6;
+  }
+
   &__img {
     margin-right: 16px;
   }
