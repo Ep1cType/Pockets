@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import './MainPage.scss';
 import CategoriesTable from '../../components/MainComponents/CategoriesTable/CategoriesTable';
 import TransactionTable from '../../components/MainComponents/TransactionTable/TransactionTable';
+import WidgetsList from '../../components/MainComponents/WidgetsList/WidgetsList';
 import { setAuth } from '../../store/auth/authActions';
 
 const MainPage = () => {
@@ -33,6 +34,7 @@ const MainPage = () => {
               <TransactionTable />
               <CategoriesTable />
             </div>
+            <WidgetsList />
           </div>
         </div>
       )}

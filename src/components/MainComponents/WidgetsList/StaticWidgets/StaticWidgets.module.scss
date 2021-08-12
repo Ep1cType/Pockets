@@ -1,0 +1,57 @@
+.staticWidgets {
+  position: absolute;
+  height: 100%;
+  right: -40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plugWidget {
+  width: 305px;
+  height: 153px;
+  border-radius: 12px;
+  background-color: #E5E5E5;
+}
+
+.navigationWidget {
+  width: 222px;
+  height: 153px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: static;
+
+  &__button {
+
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &_nextWidgets {
+      height: 69px;
+      background-color: #FFF0E9;
+      width: 100%;
+    }
+    &_addWidget {
+      height: 69px;
+      width: 100%;
+      background-color: inherit;
+      border: 1px dashed #7666F8;
+    }
+  }
+}
+
+.button {
+  &__text {
+    color: #7367F0;
+    font-size: 21px;
+    line-height: 25px;
+    font-weight: 500;
+  }
+}
