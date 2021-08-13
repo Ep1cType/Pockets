@@ -1,0 +1,45 @@
+.calendar {
+  width: 305px;
+  &__label {
+    height: 28px;
+    margin-bottom: 32px;
+  }
+  &__header {
+
+  }
+  &__days {
+
+  }
+
+
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+}
+
+.selector {
+  background-color: #F8F7FC;
+  color: #5D5FEF;
+  border-radius: 6px;
+  width: 90px;
+  height: 100%;
+  outline: none;
+  border: none;
+  text-align-last: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  &__item {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+}
