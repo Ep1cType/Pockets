@@ -1,0 +1,21 @@
+.colorPalette {
+  background-color: #FFFFFF;
+  height: 149px;
+  width: 247px;
+  position: absolute;
+  left: 530px;
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  &__color {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    &_selected {
+      border: 2px solid black;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+.WidgetModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__headerInput {
+    padding: 31px 70px 0 70px;
+    &_name {
+      width: 247px;
+      text-align: center;
+
+
+      outline: none;
+      border: none;
+      margin-right: 10px;
+      height: 25px;
+
+      background-repeat: no-repeat;
+      font-size: 24px;
+      font-weight: 700;
+      color: #6E6B7B;
+
+      margin-bottom: 32px;
+    }
+  }
+
+  &__paramsInputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  &__input {
+    border: none;
+    text-align: center;
+    outline: none;
+
+    color: #6E6B7B;
+    font-size: 18px;
+    line-height: 24px;
+
+    &_limit {
+        width: 131px;
+        height: 51px;
+        border-left: 1px solid #E9ECEF;
+        border-right: 1px solid #E9ECEF;
+    }
+    &_validity {
+        width: 148px;
+        height: 51px;
+    }
+  }
+
+  &__select {
+    border: none;
+    background: none;
+    outline: none;
+    text-align: center;
+    appearance: none;
+    color: #6E6B7B;
+    font-size: 18px;
+    line-height: 24px;
+    text-align-last: center;
+
+    &_category {
+      width: 189px;
+      height: 51px;
+    }
+
+    &_validity {
+      width: 189px;
+      height: 51px;
+    }
+  }
+
+  &__option {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  &__toggles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    border-top: 1px solid #E9ECEF;
+    width: 100%;
+  }
+
+  &__toggle {
+    width: 100%;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &_active {
+      font-weight: 600;
+    }
+
+    &_more {
+      border-right: 1px solid #E9ECEF;
+    }
+    &_less {
+
+    }
+  }
+}

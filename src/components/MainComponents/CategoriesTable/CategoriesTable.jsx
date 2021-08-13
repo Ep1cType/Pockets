@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesService from '../../../services/CaregoriesService';
 import { setCategoriesList } from '../../../store/categories/categoriesActions';
+import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 
 import s from './CategoriesTable.module.scss';
@@ -65,7 +66,11 @@ const CategoriesTable = () => {
   };
 
   if (isLoading) {
-    return <span>LOADING...</span>;
+    return (
+      <div className={s.categoriesTable}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
