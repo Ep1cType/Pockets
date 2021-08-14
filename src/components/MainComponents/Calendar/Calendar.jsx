@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import s from './Calendar.module.scss';
 import CalendarBody from './CalendarBody/CalendarBody';
 
-const Calendar = () => {
+const Calendar = ({ firstDayOfWeek, setFirstDayOfWeek, lastDayOfWeek, setLastDayOfWeek }) => {
   const [choiceOption, setChoiceOption] = useState('week');
   const [firstDay, setFirstDay] = useState('');
   const [lastDay, setLastDay] = useState('');
@@ -30,6 +30,10 @@ const Calendar = () => {
         setFirstDay={setFirstDay}
         lastDay={lastDay}
         setLastDay={setLastDay}
+        firstDayOfWeek={firstDayOfWeek}
+        setFirstDayOfWeek={setFirstDayOfWeek}
+        lastDayOfWeek={lastDayOfWeek}
+        setLastDayOfWeek={setLastDayOfWeek}
       />
     </div>
   );

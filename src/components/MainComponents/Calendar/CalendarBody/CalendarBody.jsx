@@ -6,7 +6,17 @@ import rightIcon from '../../../../assets/img/rightIcon.svg';
 
 import s from './CalendarBody.module.scss';
 
-const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay }) => {
+const CalendarBody = ({
+  choiceOption,
+  firstDay,
+  setFirstDay,
+  lastDay,
+  setLastDay,
+  firstDayOfWeek,
+  setFirstDayOfWeek,
+  lastDayOfWeek,
+  setLastDayOfWeek,
+}) => {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -25,7 +35,7 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
     'December',
   ];
 
-  const getStartDayOfMonth = (date: Date) => {
+  const getStartDayOfMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
   };
 
@@ -36,7 +46,7 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
   const [year, setYear] = useState(date.getFullYear());
   const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
 
-  const isLeapYear = (year: number) => {
+  const isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   };
 
@@ -61,6 +71,11 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
 
     return yy + '.' + mm + '.' + dd;
   };
+
+  let first = today.getDate() - today.getDay() + 1;
+  let last = first + 6;
+  setFirstDayOfWeek(formatDate(new Date(today.setDate(first))));
+  setLastDayOfWeek(formatDate(new Date(today.setDate(last))));
 
   const clickLeft = (year, month, day) => {
     setDate(new Date(year, month - 1, day));
@@ -101,13 +116,7 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
         </div>
         <div className={s.daysOfWeek}>
           {DAYS_OF_THE_WEEK.map((d, index) => (
-            <span
-              className={cn(s.daysOfWeek__item, {
-                [s.daysOfWeek__item_today]:
-                  index === new Date().getMonth() - 3 && month === new Date().getMonth() && choiceOption === 'week',
-              })}
-              key={d}
-            >
+            <span className={cn(s.daysOfWeek__item)} key={index}>
               {d}
             </span>
           ))}
@@ -122,6 +131,14 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
               <li
                 className={cn(
                   s.daysList__item,
+                  {
+                    [s.daysList__item_week]:
+                      d <= Number(lastDayOfWeek.substring(6)) &&
+                      d >= Number(firstDayOfWeek.substring(6)) &&
+                      month === Number(firstDayOfWeek.substring(3, 5)) - 1 &&
+                      month === Number(lastDayOfWeek.substring(3, 5)) - 1 &&
+                      choiceOption === 'week',
+                  },
                   {
                     [s.daysList__item_today]:
                       d === new Date().getDate() && month === new Date().getMonth() && choiceOption !== 'week',

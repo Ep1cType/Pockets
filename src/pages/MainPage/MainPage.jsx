@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -16,11 +16,13 @@ const MainPage = () => {
   const history = useHistory();
   const userInfo = useSelector((state) => state.authPage.userInfo);
 
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState('');
+  const [lastDayOfWeek, setLastDayOfWeek] = useState('');
+
   useEffect(() => {
     if (localStorage.getItem('access_token')) {
       dispatch(setAuth(true));
       UserService.getUser().then((response) => {
-        console.log(response.data);
         dispatch(setUserInfo(response.data.username));
       });
     } else {
@@ -49,7 +51,12 @@ const MainPage = () => {
               <img className="userInfo__img" src={avatar} alt="#" />
               <div className="userInfo__text">Hi, {userInfo}</div>
             </div>
-            <Calendar />
+            <Calendar
+              firstDayOfWeek={firstDayOfWeek}
+              setFirstDayOfWeek={setFirstDayOfWeek}
+              lastDayOfWeek={lastDayOfWeek}
+              setLastDayOfWeek={setLastDayOfWeek}
+            />
           </div>
         </div>
       )}
