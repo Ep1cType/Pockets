@@ -55,23 +55,18 @@ const CategoriesTable = () => {
             dispatch(setCategoriesList(response.data));
             setActive(false);
             setCategoryValue('');
+            setIsLoading(false);
           })
           .catch((err) => {
             setError(err.response.data);
+            setIsLoading(false);
           });
       })
       .catch((err) => {
         setError(err.response.data);
+        setIsLoading(false);
       });
   };
-
-  if (isLoading) {
-    return (
-      <div className={s.categoriesTable}>
-        <Loader />
-      </div>
-    );
-  }
 
   return (
     <div className={s.categoriesTable}>
@@ -92,10 +87,14 @@ const CategoriesTable = () => {
       </Modal>
       <CategoriesTableHeader openModal={openModal} />
       <CategoriesTableSubheader />
-      <ul className={s.categoriesList}>
-        {categoriesList.length >= 1 &&
-          categoriesList.map((el) => <CategoryItem key={el.id} name={el.name} category_type={el.category_type} />)}
-      </ul>
+      {!isLoading ? (
+        <ul className={s.categoriesList}>
+          {categoriesList.length >= 1 &&
+            categoriesList.map((el) => <CategoryItem key={el.id} name={el.name} category_type={el.category_type} />)}
+        </ul>
+      ) : (
+        <Loader />
+      )}
       <div className={s.categoriesTable__footer} />
     </div>
   );

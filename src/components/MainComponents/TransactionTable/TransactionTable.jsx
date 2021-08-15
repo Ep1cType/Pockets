@@ -10,6 +10,7 @@ import {
   editTransaction,
   setTransactionsList,
 } from '../../../store/transactions/transactionsActions';
+import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 
 import TransactionItem from './TransactionItem/TransactionItem';
@@ -18,16 +19,16 @@ import TransactionTableHeader from './TransactionTableHeader/TransactionTableHea
 import TransactionTableModalContent from './TransactionTableModalContent/TransactionTableModalContent';
 import TransactionTableModalEditContent from './TransactionTableModalEditContent/TransactionTableModalEditContent';
 
-const TransactionTable = () => {
+const TransactionTable = ({ firstPickDay, lastPickDay }) => {
   const dispatch = useDispatch();
   const transactionsList = useSelector((state) => state.transactionsPage.transactionsList);
   const categoriesList = useSelector((state) => state.categoriesPage.categoriesList);
 
   const [error, setError] = useState(null);
   const [offset, setOffset] = useState(0);
-  const [fetching, setFetching] = useState(true);
   const [categoryType, setCategoryType] = useState('expense');
   const [totalCount, setTotalCount] = useState(0);
+  const [fetching, setFetching] = useState(true);
   const [active, setActive] = useState(false);
   const [activeEdit, setActiveEdit] = useState(false);
   const [categoryValue, setCategoryValue] = useState('');
@@ -155,9 +156,9 @@ const TransactionTable = () => {
       });
   };
 
-  if (fetching && offset === 0) {
-    return <span>LOADING...</span>;
-  }
+  // if (fetching && offset === 0) {
+  //   return <span>LOADING...</span>;
+  // }
 
   return (
     <div className={s.transactionTable}>
@@ -198,21 +199,25 @@ const TransactionTable = () => {
         />
       </Modal>
       <TransactionTableHeader openModal={openModal} />
-      <ul className={s.transactionTable__list} onScroll={scrollHandler}>
-        {transactionsList.length >= 1 &&
-          transactionsList.map((transaction) => (
-            <TransactionItem
-              key={transaction.id}
-              id={transaction.id}
-              amount={transaction.amount}
-              data={transaction.transaction_date}
-              categoryType={transaction.category.category_type}
-              categoryName={transaction.category.name}
-              deleteTransaction={handleDelete}
-              openEditModal={openEditModal}
-            />
-          ))}
-      </ul>
+      {fetching && offset === 0 ? (
+        <Loader />
+      ) : (
+        <ul className={s.transactionTable__list} onScroll={scrollHandler}>
+          {transactionsList.length >= 1 &&
+            transactionsList.map((transaction) => (
+              <TransactionItem
+                key={transaction.id}
+                id={transaction.id}
+                amount={transaction.amount}
+                data={transaction.transaction_date}
+                categoryType={transaction.category.category_type}
+                categoryName={transaction.category.name}
+                deleteTransaction={handleDelete}
+                openEditModal={openEditModal}
+              />
+            ))}
+        </ul>
+      )}
       <div className={s.transactionTable__footer} />
     </div>
   );

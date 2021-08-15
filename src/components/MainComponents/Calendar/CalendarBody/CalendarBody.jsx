@@ -6,17 +6,7 @@ import rightIcon from '../../../../assets/img/rightIcon.svg';
 
 import s from './CalendarBody.module.scss';
 
-const CalendarBody = ({
-  choiceOption,
-  firstDay,
-  setFirstDay,
-  lastDay,
-  setLastDay,
-  firstDayOfWeek,
-  setFirstDayOfWeek,
-  lastDayOfWeek,
-  setLastDayOfWeek,
-}) => {
+const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay }) => {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -66,16 +56,15 @@ const CalendarBody = ({
     let mm = pickDate.getMonth() + 1;
     if (mm < 10) mm = '0' + mm;
 
-    let yy = pickDate.getFullYear() % 100;
-    if (yy < 10) yy = '0' + yy;
+    let yy = pickDate.getFullYear();
 
-    return yy + '.' + mm + '.' + dd;
+    return yy + '-' + mm + '-' + dd;
   };
 
   let first = today.getDate() - today.getDay() + 1;
   let last = first + 6;
-  setFirstDayOfWeek(formatDate(new Date(today.setDate(first))));
-  setLastDayOfWeek(formatDate(new Date(today.setDate(last))));
+  let firstDayOfWeek = formatDate(new Date(today.setDate(first)));
+  let lastDayOfWeek = formatDate(new Date(today.setDate(last)));
 
   const clickLeft = (year, month, day) => {
     setDate(new Date(year, month - 1, day));
@@ -133,10 +122,10 @@ const CalendarBody = ({
                   s.daysList__item,
                   {
                     [s.daysList__item_week]:
-                      d <= Number(lastDayOfWeek.substring(6)) &&
-                      d >= Number(firstDayOfWeek.substring(6)) &&
-                      month === Number(firstDayOfWeek.substring(3, 5)) - 1 &&
-                      month === Number(lastDayOfWeek.substring(3, 5)) - 1 &&
+                      d <= Number(lastDayOfWeek.substring(8)) &&
+                      d >= Number(firstDayOfWeek.substring(8)) &&
+                      month === Number(firstDayOfWeek.substring(5, 7)) - 1 &&
+                      month === Number(lastDayOfWeek.substring(5, 7)) - 1 &&
                       choiceOption === 'week',
                   },
                   {
@@ -145,11 +134,11 @@ const CalendarBody = ({
                   },
                   {
                     [s.daysList__item_selectedFirst]:
-                      Number(d) === Number(firstDay.substring(6)) && month === Number(firstDay.substring(3, 5)) - 1,
+                      Number(d) === Number(firstDay.substring(8)) && month === Number(firstDay.substring(5, 7)) - 1,
                   },
                   {
                     [s.daysList__item_selectedLast]:
-                      Number(d) === Number(lastDay.substring(6)) && month === Number(lastDay.substring(3, 5)) - 1,
+                      Number(d) === Number(lastDay.substring(8)) && month === Number(lastDay.substring(5, 7)) - 1,
                   },
                   { [s.daysList__item_inactive]: d <= 0 }
                 )}
