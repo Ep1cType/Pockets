@@ -156,10 +156,6 @@ const TransactionTable = ({ firstPickDay, lastPickDay }) => {
       });
   };
 
-  // if (fetching && offset === 0) {
-  //   return <span>LOADING...</span>;
-  // }
-
   return (
     <div className={s.transactionTable}>
       <Modal
