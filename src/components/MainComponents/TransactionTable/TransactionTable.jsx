@@ -19,16 +19,14 @@ import TransactionTableHeader from './TransactionTableHeader/TransactionTableHea
 import TransactionTableModalContent from './TransactionTableModalContent/TransactionTableModalContent';
 import TransactionTableModalEditContent from './TransactionTableModalEditContent/TransactionTableModalEditContent';
 
-const TransactionTable = ({ firstPickDay, lastPickDay }) => {
+const TransactionTable = ({ offset, setOffset, fetching, setFetching, startDate, endDate, choiceOption }) => {
   const dispatch = useDispatch();
   const transactionsList = useSelector((state) => state.transactionsPage.transactionsList);
   const categoriesList = useSelector((state) => state.categoriesPage.categoriesList);
 
   const [error, setError] = useState(null);
-  const [offset, setOffset] = useState(0);
   const [categoryType, setCategoryType] = useState('expense');
   const [totalCount, setTotalCount] = useState(0);
-  const [fetching, setFetching] = useState(true);
   const [active, setActive] = useState(false);
   const [activeEdit, setActiveEdit] = useState(false);
   const [categoryValue, setCategoryValue] = useState('');
@@ -46,7 +44,7 @@ const TransactionTable = ({ firstPickDay, lastPickDay }) => {
 
   useEffect(() => {
     if (fetching) {
-      TransactionService.getTransactions(offset)
+      TransactionService.getTransactions(offset, startDate, endDate)
         .then((response) => {
           dispatch(setTransactionsList([...transactionsList, ...response.data.results]));
           setOffset((prevState) => prevState + 20);
@@ -58,7 +56,7 @@ const TransactionTable = ({ firstPickDay, lastPickDay }) => {
           setFetching(false);
         });
     }
-  }, [fetching]);
+  }, [fetching, choiceOption]);
 
   const scrollHandler = (e) => {
     if (e.target.scrollHeight - e.target.scrollTop < 520 && transactionsList.length < totalCount) {

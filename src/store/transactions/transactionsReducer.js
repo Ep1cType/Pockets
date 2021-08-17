@@ -1,4 +1,10 @@
-import { ADD_TRANSACTION, DELETE_TRANSACTION, EDIT_TRANSACTION, SET_TRANSACTIONS } from './transactionsTypes';
+import {
+  ADD_TRANSACTION,
+  CLEAR_TRANSACTIONS,
+  DELETE_TRANSACTION,
+  EDIT_TRANSACTION,
+  SET_TRANSACTIONS,
+} from './transactionsTypes';
 
 let initialState = {
   transactionsList: [],
@@ -28,6 +34,12 @@ const transactionsReducer = (state = initialState, action) => {
       return {
         ...state,
         transactionsList: state.transactionsList.map((el) => (el.id === action.payload.id ? action.payload : el)),
+      };
+    }
+    case CLEAR_TRANSACTIONS: {
+      return {
+        ...state,
+        transactionsList: [],
       };
     }
     default:

@@ -18,8 +18,12 @@ const MainPage = () => {
   const history = useHistory();
   const userInfo = useSelector((state) => state.authPage.userInfo);
 
-  const [choiceOption, setChoiceOption] = useState('week');
+  const [choiceOption, setChoiceOption] = useState('all');
   const [isLoading, setIsLoading] = useState(false);
+  const [startDate, setStartDate] = useState('1970-01-01');
+  const [endDate, setEndDate] = useState('2500-01-01');
+  const [offset, setOffset] = useState(0);
+  const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem('access_token')) {
@@ -50,8 +54,21 @@ const MainPage = () => {
               <span className={s.logo__text}>Pockets</span>
             </div>
             <div className={s.tables}>
-              <TransactionTable />
-              <CategoriesTable />
+              <TransactionTable
+                offset={offset}
+                setOffset={setOffset}
+                fetching={fetching}
+                setFetching={setFetching}
+                startDate={startDate}
+                endDate={endDate}
+                choiceOption={choiceOption}
+              />
+              <CategoriesTable
+                startDate={startDate}
+                endDate={endDate}
+                choiceOption={choiceOption}
+                fetching={fetching}
+              />
             </div>
             <WidgetsList />
           </div>
@@ -60,7 +77,14 @@ const MainPage = () => {
               <img className={s.userInfo__img} src={avatar} alt="#" />
               <div className={s.userInfo__text}>Hi, {userInfo}</div>
             </div>
-            <Calendar choiceOption={choiceOption} setChoiceOption={setChoiceOption} />
+            <Calendar
+              choiceOption={choiceOption}
+              setChoiceOption={setChoiceOption}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              setOffset={setOffset}
+              setFetching={setFetching}
+            />
           </div>
         </div>
       )}

@@ -1,12 +1,26 @@
 import cn from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import leftIcon from '../../../../assets/img/leftIcon.svg';
 import rightIcon from '../../../../assets/img/rightIcon.svg';
+import { clearTransaction } from '../../../../store/transactions/transactionsActions';
 
 import s from './CalendarBody.module.scss';
 
-const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay }) => {
+const CalendarBody = ({
+  choiceOption,
+  setFirstDay,
+  setLastDay,
+  firstDay,
+  lastDay,
+  setStartDate,
+  setEndDate,
+  setOffset,
+  setFetching,
+}) => {
+  const dispatch = useDispatch();
+
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYS_OF_THE_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -47,6 +61,34 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
     setStartDay(getStartDayOfMonth(date));
   }, [date]);
 
+  useEffect(() => {
+    if (choiceOption === 'week') {
+      setStartDate(firstDayOfWeek);
+      setEndDate(lastDayOfWeek);
+      setOffset(0);
+      dispatch(clearTransaction());
+      setFetching(true);
+    } else if (choiceOption === 'month') {
+      setStartDate(firstDayOfMonth);
+      setEndDate(lastDayOfMonth);
+      setOffset(0);
+      dispatch(clearTransaction());
+      setFetching(true);
+    } else if (choiceOption === 'year') {
+      setStartDate(firstDayOfYear);
+      setEndDate(lastDayOfYear);
+      setOffset(0);
+      dispatch(clearTransaction());
+      setFetching(true);
+    } else {
+      setStartDate('1970-01-01');
+      setEndDate('2500-01-01');
+      setOffset(0);
+      dispatch(clearTransaction());
+      setFetching(true);
+    }
+  }, [choiceOption]);
+
   const days = isLeapYear(date.getFullYear()) ? DAYS_LEAP : DAYS;
 
   const formatDate = (pickDate) => {
@@ -65,6 +107,10 @@ const CalendarBody = ({ choiceOption, firstDay, setFirstDay, lastDay, setLastDay
   let last = first + 6;
   let firstDayOfWeek = formatDate(new Date(today.setDate(first)));
   let lastDayOfWeek = formatDate(new Date(today.setDate(last)));
+  let firstDayOfMonth = formatDate(new Date(today.getFullYear(), today.getMonth(), 1));
+  let lastDayOfMonth = formatDate(new Date(today.getFullYear(), date.getMonth() + 1, 0));
+  let firstDayOfYear = formatDate(new Date(today.getFullYear(), 0, 1));
+  let lastDayOfYear = formatDate(new Date(today.getFullYear(), 11, 31));
 
   const clickLeft = (year, month, day) => {
     setDate(new Date(year, month - 1, day));
