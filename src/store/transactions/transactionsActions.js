@@ -1,4 +1,10 @@
-import { ADD_TRANSACTION, DELETE_TRANSACTION, EDIT_TRANSACTION, SET_TRANSACTIONS } from './transactionsTypes';
+import {
+  ADD_TRANSACTION,
+  CLEAR_TRANSACTIONS,
+  DELETE_TRANSACTION,
+  EDIT_TRANSACTION,
+  SET_TRANSACTIONS,
+} from './transactionsTypes';
 
 export const setTransactionsList = (transactions) => {
   return {
@@ -25,5 +31,11 @@ export const editTransaction = (newTransaction) => {
   return {
     type: EDIT_TRANSACTION,
     payload: newTransaction,
+  };
+};
+
+export const clearTransaction = () => {
+  return {
+    type: CLEAR_TRANSACTIONS,
   };
 };

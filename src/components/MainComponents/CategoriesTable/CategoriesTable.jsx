@@ -12,7 +12,7 @@ import CategoriesTableModalContent from './CategoriesTableModalContent/Categorie
 import CategoriesTableSubheader from './CategoriesTableSubheader/CategoriesTableSubheader';
 import CategoryItem from './CategoryItem/CategoryItem';
 
-const CategoriesTable = () => {
+const CategoriesTable = ({ startDate, choiceOption, endDate, fetching }) => {
   const dispatch = useDispatch();
   const categoriesList = useSelector((state) => state.categoriesPage.categoriesList);
 
@@ -23,17 +23,19 @@ const CategoriesTable = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    CategoriesService.getCategories()
-      .then((response) => {
-        dispatch(setCategoriesList(response.data));
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err.response.data);
-        setIsLoading(false);
-      });
-  }, []);
+    if (fetching) {
+      setIsLoading(true);
+      CategoriesService.getCategoriesSum(startDate, endDate)
+        .then((response) => {
+          dispatch(setCategoriesList(response.data));
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setError(err.response.data);
+          setIsLoading(false);
+        });
+    }
+  }, [fetching, choiceOption]);
 
   const openModal = () => {
     setActive(true);
@@ -50,7 +52,7 @@ const CategoriesTable = () => {
     CategoriesService.setCategory(categoryValue, categoryType)
       .then((response) => {
         dispatch(setCategoriesList(response.data));
-        CategoriesService.getCategories()
+        CategoriesService.getCategoriesSum(startDate, endDate)
           .then((response) => {
             dispatch(setCategoriesList(response.data));
             setActive(false);
@@ -90,7 +92,14 @@ const CategoriesTable = () => {
       {!isLoading ? (
         <ul className={s.categoriesList}>
           {categoriesList.length >= 1 &&
-            categoriesList.map((el) => <CategoryItem key={el.id} name={el.name} category_type={el.category_type} />)}
+            categoriesList.map((el) => (
+              <CategoryItem
+                key={el.id}
+                name={el.name}
+                category_type={el.category_type}
+                transactions_sum={el.transactions_sum}
+              />
+            ))}
         </ul>
       ) : (
         <Loader />
