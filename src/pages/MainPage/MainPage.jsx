@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import avatar from '../../assets/img/avatar.png';
 import Calendar from '../../components/MainComponents/Calendar/Calendar';
 import CategoriesTable from '../../components/MainComponents/CategoriesTable/CategoriesTable';
+import Global from '../../components/MainComponents/Global/Global';
 import Loader from '../../components/MainComponents/Loader/Loader';
 import TransactionTable from '../../components/MainComponents/TransactionTable/TransactionTable';
 import WidgetsList from '../../components/MainComponents/WidgetsList/WidgetsList';
@@ -85,6 +86,7 @@ const MainPage = () => {
               setOffset={setOffset}
               setFetching={setFetching}
             />
+            <Global />
           </div>
         </div>
       )}
