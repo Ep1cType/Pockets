@@ -1,0 +1,53 @@
+.mainPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0 0 82px;
+  width: 1000px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tables {
+  display: flex;
+}
+
+.logo {
+  margin-bottom: 31px;
+  &__text {
+    font-size: 34px;
+    line-height: 44px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #6E6B7B;
+  }
+}
+
+.rightMenu {
+  padding: 50px 80px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  &__img {
+    background-color: #7367F0;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-bottom: 34px;
+  }
+  &__text {
+    font-size: 34px;
+    line-height: 44px;
+    font-weight: 700;
+    color: #6E6B7B;
+  }
+}
+
+

@@ -1,0 +1,128 @@
+.calendarBody {
+  &__header {
+    height: 68px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+  }
+  &__settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    height: 18px;
+  }
+
+  &__text {
+    width: 200px;
+    text-align: center;
+
+    &_month {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+      margin-right: 15px;
+    }
+
+    &_year {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 400;
+    }
+  }
+}
+
+.daysOfWeek {
+  width: 100%;
+  display: flex;
+  text-align: center;
+
+  &__item {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    width: 14.2%;
+  }
+}
+
+.daysList {
+  padding: 15px 11px;
+  height: 228px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  &__item {
+    width: 14.2%;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+
+    font-size: 14px;
+    line-height: 21px;
+    :hover {
+      border-radius: 50%;
+      border: 2px solid #7367F0;
+    }
+
+    &_week {
+      color: #FFFFFF;
+      background-color: #7367F0;
+      border-radius: 50%;
+    }
+
+    &_today {
+      color: #FFFFFF;
+      background-color: #7367F0;
+      border-radius: 50%;
+    }
+
+    &_selectedFirst {
+      background: #F6F6F6;
+      border: 1px solid #E6E6E6;
+      border-radius: 18px;
+    }
+
+    &_selectedLast {
+      border: 2px solid #7367F0;
+      background: #F6F6F6;
+      border-radius: 18px;
+    }
+
+    &_inactive {
+      cursor: inherit;
+      border: none;
+
+      :hover {
+        border: none;
+        cursor: inherit;
+      }
+    }
+
+  }
+
+  &__subitem {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    line-height: 21px;
+    font-style: inherit;
+  }
+
+}
